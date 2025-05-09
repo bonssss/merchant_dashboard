@@ -29,6 +29,7 @@ nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
+
 .hypothesis/
 
 # Selenium screenshots or logs
