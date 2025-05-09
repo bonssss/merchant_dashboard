@@ -8,7 +8,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def test_Login():
+def test_QR_management():
     driver = webdriver.Chrome()
     driver.get("https://merchantapp-dashboard.arifpay.net/")
     driver.maximize_window()
@@ -33,5 +33,11 @@ def test_Login():
     element = driver.find_element(By.XPATH, "(//h1[normalize-space()='Dashboard'])[1]")
     assert element.is_displayed(), "Login failed, dashboard not displayed."
     print("Login successful, dashboard displayed.")
+    # Click on the QR Management tab
+    qr_management_tab = driver.find_element(By.XPATH, "(//span[normalize-space()='QR Code Management'])[1]")
+    qr_management_tab.click()
+    time.sleep(5)
+    
+    
 
     driver.quit()
