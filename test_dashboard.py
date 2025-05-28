@@ -10,7 +10,7 @@ load_dotenv()
 
 def test_Login():
     driver = webdriver.Chrome()
-    driver.get("https://merchantapp-dashboard.arifpay.net/")
+    driver.get("https://merchantapp-dashboard.arifpay.org/")
     time.sleep(5)
     # driver.implicitly_wait(10)
     phone_number = driver.find_element(By.XPATH, "(//input[@id=':r0:'])[1]")
@@ -39,4 +39,4 @@ def test_Login():
     time.sleep(5)
     
 
-    driver.quit()
+    driver.quit() 

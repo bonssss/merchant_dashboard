@@ -1,3 +1,4 @@
+
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,11 +9,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def test_Transaction():
+def test_event_management():
     driver = webdriver.Chrome()
     driver.get("https://merchantapp-dashboard.arifpay.org/")
-    time.sleep(5)
     driver.maximize_window()
+    time.sleep(5)
     # driver.implicitly_wait(10)
     phone_number = driver.find_element(By.XPATH, "(//input[@id=':r0:'])[1]")
     phone_number.send_keys(os.getenv("PHONE_NO"))
@@ -33,10 +34,9 @@ def test_Transaction():
     element = driver.find_element(By.XPATH, "(//h1[normalize-space()='Dashboard'])[1]")
     assert element.is_displayed(), "Login failed, dashboard not displayed."
     print("Login successful, dashboard displayed.")
-    
-    # Click on the Transactions tab
-    transactions_tab = driver.find_element(By.XPATH, "(//span[normalize-space()='Transactions'])[1]")
-    transactions_tab.click()
+    # Click on the Event Management tab
+    event_management_tab = driver.find_element(By.XPATH, "(//span[normalize-space()='Events Management'])[1]")
+    event_management_tab.click()
     time.sleep(5)
 
     driver.quit()
