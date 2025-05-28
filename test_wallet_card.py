@@ -1,3 +1,4 @@
+
 import time
 from selenium import webdriver
 from selenium.webdriver.common.by import By
@@ -8,11 +9,11 @@ from dotenv import load_dotenv
 load_dotenv()
 
 
-def test_Transaction():
+def test_wallet_card():
     driver = webdriver.Chrome()
     driver.get("https://merchantapp-dashboard.arifpay.org/")
-    time.sleep(5)
     driver.maximize_window()
+    time.sleep(5)
     # driver.implicitly_wait(10)
     phone_number = driver.find_element(By.XPATH, "(//input[@id=':r0:'])[1]")
     phone_number.send_keys(os.getenv("PHONE_NO"))
@@ -25,7 +26,7 @@ def test_Transaction():
     input("Please solve the CAPTCHA and press Enter to continue...")
     # Wait for the user to solve the CAPTCHA
     # After solving the CAPTCHA, you can proceed with the login
-    # Click the login button
+    # Click the login button 
     login_button = driver.find_element(By.XPATH, "(//button[normalize-space()='Sign in'])[1]")
     login_button.click()
     time.sleep(5)
@@ -33,10 +34,22 @@ def test_Transaction():
     element = driver.find_element(By.XPATH, "(//h1[normalize-space()='Dashboard'])[1]")
     assert element.is_displayed(), "Login failed, dashboard not displayed."
     print("Login successful, dashboard displayed.")
-    
-    # Click on the Transactions tab
-    transactions_tab = driver.find_element(By.XPATH, "(//span[normalize-space()='Transactions'])[1]")
-    transactions_tab.click()
     time.sleep(5)
+    # Click on the Wallet Card tab
+    wallet_card_tab = driver.find_element(By.XPATH, "(//span[normalize-space()='Wallet & Card Management'])[1]")
+    
+    wallet_card_tab.click()
+    time.sleep(5)
+    driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+    time.sleep(5)
+    driver.execute_script("window.scrollTo(0, 0);")
+    time.sleep(5)
+    card_tab = driver.find_element(By.XPATH, "(//button[normalize-space()='Cards'])[1]")
+    card_tab.click()
+    time.sleep(5)
+    # Assert that the Wallet & Card Management page is displayed
+    element = driver.find_element(By.XPATH, "(//h1[normalize-space()='Wallet & Card Management'])[1]")
+    assert element.is_displayed(), "Wallet & Card Management page not displayed."
+    print("Wallet & Card Management page displayed successfully.")
 
     driver.quit()

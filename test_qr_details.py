@@ -10,7 +10,7 @@ load_dotenv()
 
 def test_QR_management():
     driver = webdriver.Chrome()
-    driver.get("https://merchantapp-dashboard.arifpay.net/")
+    driver.get("https://merchantapp-dashboard.arifpay.org/")
     driver.maximize_window()
     time.sleep(5)
     # driver.implicitly_wait(10)
