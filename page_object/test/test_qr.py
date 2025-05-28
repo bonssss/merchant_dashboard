@@ -2,7 +2,7 @@ import time
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 
-def test_event(driver):
+def test_qr_code(driver):
     login_page = LoginPage(driver)
     dashboard_page = DashboardPage(driver)
 
@@ -16,10 +16,11 @@ def test_event(driver):
 
     assert dashboard_page.is_dashboard_visible(), "❌ Login failed, dashboard not visible"
     print("✅ Login successful")
-    
-    dashboard_page.go_to_event_management()
+
+    dashboard_page.go_to_qr_code_management()
     time.sleep(5)
+
+    assert dashboard_page.is_qr_code_management_visible(), "❌ QR Code Management page not visible"
+    print("✅ Navigated to QR Code Management page")
     
-    dashboard_page.go_to_event_details()
-    time.sleep(5)
-    
+  
