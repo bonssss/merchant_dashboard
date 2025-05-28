@@ -1,0 +1,36 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Test cache
+.pytest_cache/
+.cache/
+
+# Environment variables
+.env
+
+# IDE-specific files (Visual Studio Code, PyCharm, etc.)
+.vscode/
+.idea/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Logs and reports
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Allure or HTML reports
+allure-report/
+*.html
+
+# Selenium screenshots (optional)
+screenshots/
+
+# Virtual environment (if inside project)
+venv/
+env/
