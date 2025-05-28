@@ -1,0 +1,52 @@
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import dotenv
+import os
+from dotenv import load_dotenv
+# Load environment variables from .env file
+load_dotenv()
+
+
+def test_wallet_management():
+    driver = webdriver.Chrome()
+    driver.get("https://merchantapp-dashboard.arifpay.org/")
+    driver.maximize_window()
+    time.sleep(5)
+    # driver.implicitly_wait(10)
+    phone_number = driver.find_element(By.XPATH, "(//input[@id=':r0:'])[1]")
+    phone_number.send_keys(os.getenv("PHONE_NO"))
+    time.sleep(2)
+    password = driver.find_element(By.XPATH, "(//input[@id=':r1:'])[1]")
+    password.send_keys(os.getenv("PASSWORD"))
+    time.sleep(2)
+    
+    #handle the captcha
+    input("Please solve the CAPTCHA and press Enter to continue...")
+    # Wait for the user to solve the CAPTCHA
+    # After solving the CAPTCHA, you can proceed with the login
+    # Click the login button 
+    login_button = driver.find_element(By.XPATH, "(//button[normalize-space()='Sign in'])[1]")
+    login_button.click()
+    time.sleep(5)
+    #assert
+    element = driver.find_element(By.XPATH, "(//h1[normalize-space()='Dashboard'])[1]")
+    assert element.is_displayed(), "Login failed, dashboard not displayed."
+    print("Login successful, dashboard displayed.")
+    time.sleep(5)
+    #click company management tab
+    company_management_tab = driver.find_element(By.XPATH, "(//span[normalize-space()='Company Management'])[1]")
+    company_management_tab.click()
+    time.sleep(5)
+    element = driver.find_element(By.XPATH, "(//h1[normalize-space()='ETH-SWITCH Configuration'])[1]")
+    assert element.is_displayed(), "Company Management page not displayed."
+    print("Company Management page displayed successfully.")
+    #COm[any details
+    company_details_tab = driver.find_element(By.XPATH, "(//td[normalize-space()='approve 22'])[1]")
+    company_details_tab.click()
+    time.sleep(5)
+    element = driver.find_element(By.XPATH, "(//h1[normalize-space()='approve 22 Details'])[1]")
+    assert element.is_displayed(), "Company Details page not displayed."    
+    print("Company Details page displayed successfully.")    
+
+    driver.quit()
