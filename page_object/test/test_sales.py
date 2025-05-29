@@ -1,14 +1,14 @@
 import time
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
-import pytest
 import allure
-@allure.feature('QR Code Management')
-@allure.story('QR Code Management')
-@allure.title('Test QR Code Management')
-@allure.description('This test verifies the QR Code Management functionality in the dashboard.')
+@allure.feature('Sales Management')
+@allure.story('Sales Agent Management')
+@allure.title('Test Sales Agent Management')
+@allure.description('This test verifies the Sales Agent Management functionality in the dashboard.')
 @allure.severity(allure.severity_level.NORMAL)
-def test_qr_code(driver):
+
+def test_event(driver):
     login_page = LoginPage(driver)
     dashboard_page = DashboardPage(driver)
 
@@ -22,11 +22,12 @@ def test_qr_code(driver):
 
     assert dashboard_page.is_dashboard_visible(), "❌ Login failed, dashboard not visible"
     print("✅ Login successful")
-
-    dashboard_page.go_to_qr_code_management()
-    time.sleep(5)
-
-    assert dashboard_page.is_qr_code_management_visible(), "❌ QR Code Management page not visible"
-    print("✅ Navigated to QR Code Management page")
     
-  
+    
+    # click sales tab
+    dashboard_page.go_to_sales_management()
+    time.sleep(5)
+    # verify sales header
+    assert dashboard_page.is_sales_management_visible(), "❌ Sales Management header not visible"
+    print("✅ Sales Management header is visible")
+    
