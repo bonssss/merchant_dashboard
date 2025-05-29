@@ -2,6 +2,13 @@ import time
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
 
+import allure
+@allure.feature('Event Management')
+@allure.story('Event Management')
+@allure.title('Test Event Management')
+@allure.description('This test verifies the Event Management functionality in the dashboard.')
+@allure.severity(allure.severity_level.NORMAL)
+
 def test_event(driver):
     login_page = LoginPage(driver)
     dashboard_page = DashboardPage(driver)

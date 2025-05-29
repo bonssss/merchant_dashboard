@@ -1,6 +1,13 @@
 import time
 from pages.login_page import LoginPage
 from pages.dashboard_page import DashboardPage
+import pytest
+import allure
+@allure.feature('QR Code Management')
+@allure.story('QR Code Management')
+@allure.title('Test QR Code Management')
+@allure.description('This test verifies the QR Code Management functionality in the dashboard.')
+@allure.severity(allure.severity_level.NORMAL)
 
 def test_transaction(driver):
     login_page = LoginPage(driver)

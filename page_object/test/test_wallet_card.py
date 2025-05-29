@@ -1,6 +1,14 @@
 from pages.login_page import LoginPage
 from pages.wallet_card_page import WalletCardPage
 import time
+
+import pytest
+import allure
+@allure.feature('Wallet & Card Management')
+@allure.story('Wallet & Card Management')
+@allure.title('Test Wallet & Card Management')
+@allure.description('This test verifies the Wallet & Card Management functionality in the dashboard.')
+@allure.severity(allure.severity_level.NORMAL)
 def test_wallet_card(driver):
     login_page = LoginPage(driver)
     wallet_card_page = WalletCardPage(driver)

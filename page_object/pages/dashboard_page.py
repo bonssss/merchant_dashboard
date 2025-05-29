@@ -9,6 +9,13 @@ class DashboardPage:
         self.event_details = (By.XPATH, "(//td[@class='MuiTableCell-root MuiTableCell-body MuiTableCell-sizeMedium css-gl123g'][normalize-space()='hello clone'])[1]")
         self.qr_code_management_tab = (By.XPATH, "(//span[normalize-space()='QR Code Management'])[1]")
         self.qr_code_management_header = (By.XPATH, "(//h1[normalize-space()='QR Management'])[1]")
+        self.company_management_tab =(By.XPATH, "(//span[normalize-space()='Company Management'])[1]")
+        self.company_management_header = (By.XPATH, "(//h1[normalize-space()='ETH-SWITCH Configuration'])[1]")
+        self.sales_tab = (By.XPATH, "(//span[normalize-space()='Sales Agent Management'])[1]")
+        self.sales_header = (By.XPATH, "(//h1[normalize-space()='Sales Management'])[1]")
+        self.merchnant_management_tab = (By.XPATH, "(//span[normalize-space()='Merchant Management'])[1]")
+        self.merchnant_management_header = (By.XPATH, "(//h1[normalize-space()='Merchant Management'])[1]")
+        self.pending_merchant= (By.XPATH, "(//button[normalize-space()='Pending Approval (1)'])[1]")
 
     def is_dashboard_visible(self):
         return self.driver.find_element(*self.dashboard_header).is_displayed()
@@ -25,4 +32,21 @@ class DashboardPage:
         return self.driver.find_element(*self.qr_code_management_header).is_displayed()
     def go_to_qr_code_management(self):
         self.driver.find_element(*self.qr_code_management_tab).click()
+    def is_company_management_visible(self):
+        return self.driver.find_element(*self.company_management_header).is_displayed()
+    def go_to_company_management(self):
+        self.driver.find_element(*self.company_management_tab).click()
+        
+    def is_sales_management_visible(self):
+        return self.driver.find_element(*self.sales_header).is_displayed()
+        
+    def go_to_sales_management(self):
+        self.driver.find_element(*self.sales_tab).click()
+        
+    def is_merchant_management_visible(self):
+        return self.driver.find_element(*self.merchnant_management_header).is_displayed()
+    def go_to_merchant_management(self):
+        self.driver.find_element(*self.merchnant_management_tab).click()
+    def go_to_pending_merchant(self):
+        self.driver.find_element(*self.pending_merchant).click()
        
