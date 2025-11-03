@@ -18,6 +18,7 @@ class DashboardPage:
         self.pending_merchant= (By.XPATH, "(//button[normalize-space()='Pending Approval (1)'])[1]")
         self.report_tab = (By.XPATH,"(//span[normalize-space()='Reporting & Analytics'])[1]")
         self.generate_report_button =(By.XPATH,"(//button[normalize-space()='Generate Report'])[1]")
+        self.download_report= (By.XPATH,"(//*[name()='svg'][@aria-label='Download report'])[1]")
 
     def is_dashboard_visible(self):
         return self.driver.find_element(*self.dashboard_header).is_displayed()
@@ -55,3 +56,5 @@ class DashboardPage:
         self.driver.find_element(*self.report_tab).click()
     def go_to_generate_report(self):
         self.driver.find_element(*self.generate_report_button).click()
+    def go_to_download_report(self):
+        self.driver.find_element(*self.download_report).click()
